@@ -14,6 +14,7 @@ import { ContactComponent } from './FrontClient/contact/contact.component';
 import { ReservecoachComponent } from './FrontClient/reservecoach/reservecoach.component';
 import { BecomecoachComponent } from './FrontClient/becomecoach/becomecoach.component';
 import { AboutusComponent } from './FrontClient/aboutus/aboutus.component';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -37,4 +38,53 @@ import { AboutusComponent } from './FrontClient/aboutus/aboutus.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+  constructor(private router:Router)
+  {
+    //fix bugs(home page cards + coaching route) by forcing to load js files whenever route is changed ("Ahmed Ben Hamouda")
+    router.events.subscribe((val)=>{
+      if(val instanceof NavigationStart)
+      {
+        //remove links
+        document.querySelectorAll("link").forEach(el=>el.remove());
+        //remove scripts
+        document.querySelectorAll("script").forEach(el=>el.remove());
+        //add all links
+              var style = document.createElement('link');
+        style.rel='stylesheet';
+        style.href='./../assets/css/allClient.css';
+        var head = document.getElementsByTagName('head')[0];
+        head.appendChild(style);
+        //load all js
+        var body = document.getElementsByTagName('body');
+        console.log(body); //console to test wtf in there
+        const scriptToLoad = [
+          "./../assets/js/jquery.js",
+          './../assets/js/jquery-ui.js',
+          './../assets/js/bootstrap.js',
+          './../assets/js/fontawesome.js',
+          './../assets/js/plugin/slick.js',
+          './../assets/js/plugin/jquery.nice-select.js',
+          './../assets/js/plugin/counter.js',
+          './../assets/js/plugin/waypoint.js',
+          './../assets/js/plugin/jquery.magnific-popup.js',
+          './../assets/js/plugin/wow.js',
+          './../assets/js/plugin/plugin.js',
+          './../assets/js/main.js',
+        ]
+        for(var loadHelper of scriptToLoad)
+        {
+            var jsLoader = document.createElement('script');
+            jsLoader.src=loadHelper.toString();
+            // jsLoader.defer=true;
+            body[0].appendChild(jsLoader);
+        }
+      
+      }
+      
+    })
+   //load all css
+   
+  }
+ }
