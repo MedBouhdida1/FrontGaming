@@ -2,7 +2,7 @@ $(function ($) {
   "use strict";
 
   jQuery(document).ready(function () {
-
+    
     // preloader
     $("#preloader").delay(300).animate({
       "opacity": "0"

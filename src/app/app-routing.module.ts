@@ -11,6 +11,7 @@ import { RegisterComponent } from './FrontClient/register/register.component';
 import { ReservecoachComponent } from './FrontClient/reservecoach/reservecoach.component';
 
 const routes: Routes = [
+
   { path: 'home', component: HomeComponent },
   { path: 'coaching', component: CoachingComponent },
   { path: 'register', component: RegisterComponent },
@@ -20,7 +21,15 @@ const routes: Routes = [
   { path: 'reservecoach', component: ReservecoachComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'about', component: AboutusComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  //admin paths
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
+  { path:'',redirectTo:'/home',pathMatch:'full' },
+
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
 ];
 
 @NgModule({
