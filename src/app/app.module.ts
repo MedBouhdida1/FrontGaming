@@ -39,21 +39,19 @@ import { NavigationEnd, NavigationStart, Router } from '@angular/router';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  
-  constructor(private router:Router)
-  {
+
+  constructor(private router: Router) {
     //fix bugs(home page cards + coaching route) by forcing to load js files whenever route is changed ("Ahmed Ben Hamouda")
-    router.events.subscribe((val)=>{
-      if(val instanceof NavigationStart)
-      {
+    router.events.subscribe((val) => {
+      if (val instanceof NavigationStart) {
         //remove links
-        document.querySelectorAll("link").forEach(el=>el.remove());
+        document.querySelectorAll("link").forEach(el => el.remove());
         //remove scripts
-        document.querySelectorAll("script").forEach(el=>el.remove());
+        document.querySelectorAll("script").forEach(el => el.remove());
         //add all links
-              var style = document.createElement('link');
-        style.rel='stylesheet';
-        style.href='./../assets/css/allClient.css';
+        var style = document.createElement('link');
+        style.rel = 'stylesheet';
+        style.href = './../assets/css/allClient.css';
         var head = document.getElementsByTagName('head')[0];
         head.appendChild(style);
         //load all js
@@ -73,18 +71,17 @@ export class AppModule {
           './../assets/js/plugin/plugin.js',
           './../assets/js/main.js',
         ]
-        for(var loadHelper of scriptToLoad)
-        {
-            var jsLoader = document.createElement('script');
-            jsLoader.src=loadHelper.toString();
-            // jsLoader.defer=true;
-            body[0].appendChild(jsLoader);
+        for (var loadHelper of scriptToLoad) {
+          var jsLoader = document.createElement('script');
+          jsLoader.src = loadHelper.toString();
+          // jsLoader.defer=true;
+          body[0].appendChild(jsLoader);
         }
-      
+
       }
-      
+
     })
-   //load all css
-   
+    //load all css
+
   }
- }
+}

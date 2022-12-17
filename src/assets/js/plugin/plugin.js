@@ -269,8 +269,8 @@ $(function ($) {
     });
 
     // Datepicker
-    $( "#datepicker" ).datepicker();
-    $( "#deliveryDate" ).datepicker();
+    $("#datepicker").datepicker();
+    $("#deliveryDate").datepicker();
 
     /* Countdown js */
     if (document.querySelector('.countdown') !== null) {
@@ -287,18 +287,18 @@ $(function ($) {
         dots: false,
         nav: false,
         margin: 10,
-        navigation : false,
+        navigation: false,
         autoplay: false,
         items: 4,
         autoplayTimeout: 1000,
         smartSpeed: 1000,
         responsive: {
-            0: {
-                items: 4
-            },
-            768: {
-                items: 4
-            }
+          0: {
+            items: 4
+          },
+          768: {
+            items: 4
+          }
         }
       });
     }
@@ -358,27 +358,27 @@ $(function ($) {
 
     // Input Increase
     var minVal = 1, maxVal = 20;
-    $(".increaseQty").on('click', function(){
+    $(".increaseQty").on('click', function () {
       var $parentElm = $(this).parents(".qtySelector");
       $(this).addClass("clicked");
-      setTimeout(function(){
-          $(".clicked").removeClass("clicked");
-      },100);
+      setTimeout(function () {
+        $(".clicked").removeClass("clicked");
+      }, 100);
       var value = $parentElm.find(".qtyValue").val();
       if (value < maxVal) {
-          value++;
+        value++;
       }
       $parentElm.find(".qtyValue").val(value);
     });
-    $(".decreaseQty").on('click', function(){
+    $(".decreaseQty").on('click', function () {
       var $parentElm = $(this).parents(".qtySelector");
       $(this).addClass("clicked");
-      setTimeout(function(){
-          $(".clicked").removeClass("clicked");
-      },100);
+      setTimeout(function () {
+        $(".clicked").removeClass("clicked");
+      }, 100);
       var value = $parentElm.find(".qtyValue").val();
       if (value > 1) {
-          value--;
+        value--;
       }
       $parentElm.find(".qtyValue").val(value);
     });
