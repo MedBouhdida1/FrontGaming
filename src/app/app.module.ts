@@ -89,12 +89,10 @@ export class AppModule {
           body[0].appendChild(jsLoader);
         }
 
-        
-
       }
 
     })
-    //load all css
+
 
   }
 }
