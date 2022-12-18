@@ -4,15 +4,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css',
-  // './../../../assets/css/allClient.css'
-]
+    // './../../../assets/css/allClient.css'
+  ]
 })
-export class HomeComponent   {
+export class HomeComponent {
 
-  constructor()
-  {
-         
-  }
+
+
 
 
 

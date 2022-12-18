@@ -35,19 +35,19 @@ import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 })
 export class AdminModule {
 
-  constructor(private router:Router) {
+  constructor(private router: Router) {
 
 
     // router.events.subscribe((route)=>{
     //   if(route instanceof NavigationEnd || route instanceof NavigationStart)
     //   {
-        
 
-          //remove scrollTop from index.html (bug affected to login page)
+
+    //remove scrollTop from index.html (bug affected to login page)
     document.getElementsByClassName('scrollToTop')[0].remove();
     //remove all links
     document.querySelectorAll("link").forEach(el => el.remove());
-    //remove all scripts
+    // remove all scripts
     document.querySelectorAll("script").forEach(el => el.remove());
     //remove loader from index
     document.getElementById("preloader")?.remove();
@@ -57,8 +57,11 @@ export class AdminModule {
     styleAdmin.href = "./../../assets/admin/allAdmin.css";
     styleAdmin.rel = 'stylesheet';
     head[0].appendChild(styleAdmin);
+
     //implement all js
     //cdn jquery:http:////ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js
+
+
     const allJsToImport = [
       './../../assets/admin/js/jquery-3.2.1.min.js',
       './../../assets/admin/js/popper.min.js',
@@ -93,8 +96,9 @@ export class AdminModule {
 
     //   }
     // })
-  
 
-    
+
+
   }
+
 }

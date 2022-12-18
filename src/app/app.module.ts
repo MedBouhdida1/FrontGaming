@@ -1,35 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NavigationStart, Router } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './FrontClient/home/home.component';
-import { NavbarComponent } from './FrontClient/navbar/navbar.component';
-import { FooterComponent } from './FrontClient/footer/footer.component';
-import { CoachingComponent } from './FrontClient/coaching/coaching.component';
-import { LoginComponent } from './FrontClient/login/login.component';
-import { RegisterComponent } from './FrontClient/register/register.component';
-import { CoachdetailsComponent } from './FrontClient/coachdetails/coachdetails.component';
-import { ContactComponent } from './FrontClient/contact/contact.component';
-import { ReservecoachComponent } from './FrontClient/reservecoach/reservecoach.component';
-import { BecomecoachComponent } from './FrontClient/becomecoach/becomecoach.component';
-import { AboutusComponent } from './FrontClient/aboutus/aboutus.component';
-import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    NavbarComponent,
-    FooterComponent,
-    CoachingComponent,
-    LoginComponent,
-    RegisterComponent,
-    CoachdetailsComponent,
-    ContactComponent,
-    ReservecoachComponent,
-    BecomecoachComponent,
-    AboutusComponent
+
   ],
   imports: [
     BrowserModule,
@@ -39,8 +19,16 @@ import { NavigationEnd, NavigationStart, Router } from '@angular/router';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-
   constructor(private router: Router) {
+    // document.querySelectorAll("link").forEach(el => el.remove());
+    //remove scripts
+    // document.querySelectorAll("script").forEach(el => el.remove());
+    //add all links
+    var style = document.createElement('link');
+    style.rel = 'stylesheet';
+    style.href = './../assets/css/allClient.css';
+    var head = document.getElementsByTagName('head')[0];
+    head.appendChild(style);
     //fix bugs(home page cards + coaching route) by forcing to load js files whenever route is changed ("Ahmed Ben Hamouda")
     router.events.subscribe((val) => {
 
@@ -55,15 +43,7 @@ export class AppModule {
 
 
         //remove links
-        document.querySelectorAll("link").forEach(el => el.remove());
-        //remove scripts
-        document.querySelectorAll("script").forEach(el => el.remove());
-        //add all links
-        var style = document.createElement('link');
-        style.rel = 'stylesheet';
-        style.href = './../assets/css/allClient.css';
-        var head = document.getElementsByTagName('head')[0];
-        head.appendChild(style);
+
         //load all js
         var body = document.getElementsByTagName('body');
         console.log(body); //console to test wtf in there
@@ -95,4 +75,5 @@ export class AppModule {
 
 
   }
+
 }
