@@ -43,7 +43,17 @@ export class AppModule {
   constructor(private router: Router) {
     //fix bugs(home page cards + coaching route) by forcing to load js files whenever route is changed ("Ahmed Ben Hamouda")
     router.events.subscribe((val) => {
-      if (val instanceof NavigationStart) {
+
+      if (val instanceof NavigationStart && !val.url.includes('admin')) {
+        //refresh preloader
+        document.getElementById('preloader')?.remove();
+        var bodyPreload = document.getElementsByTagName("body")[0];
+        var elemDiv = document.createElement("div");
+        elemDiv.classList.add("preloader");
+        elemDiv.id = "preloader";
+        bodyPreload.prepend(elemDiv);
+
+
         //remove links
         document.querySelectorAll("link").forEach(el => el.remove());
         //remove scripts
@@ -58,25 +68,28 @@ export class AppModule {
         var body = document.getElementsByTagName('body');
         console.log(body); //console to test wtf in there
         const scriptToLoad = [
-          "./../assets/js/jquery.js",
+          "./../assets/js/jquery.min.js",
           './../assets/js/jquery-ui.js',
-          './../assets/js/bootstrap.js',
+          './../assets/js/bootstrap.min.js',
           './../assets/js/fontawesome.js',
           './../assets/js/plugin/slick.js',
-          './../assets/js/plugin/jquery.nice-select.js',
+          './../assets/js/plugin/jquery.nice-select.min.js',
           './../assets/js/plugin/counter.js',
-          './../assets/js/plugin/waypoint.js',
-          './../assets/js/plugin/jquery.magnific-popup.js',
-          './../assets/js/plugin/wow.js',
+          './../assets/js/plugin/waypoint.min.js',
+          './../assets/js/plugin/jquery.magnific-popup.min.js',
+          './../assets/js/plugin/wow.min.js',
           './../assets/js/plugin/plugin.js',
           './../assets/js/main.js',
-        ]
+        ];
+
         for (var loadHelper of scriptToLoad) {
           var jsLoader = document.createElement('script');
           jsLoader.src = loadHelper.toString();
           // jsLoader.defer=true;
           body[0].appendChild(jsLoader);
         }
+
+        
 
       }
 

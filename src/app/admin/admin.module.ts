@@ -10,6 +10,7 @@ import { ListClientsComponent } from './list-clients/list-clients.component';
 import { ListCoachsComponent } from './list-coachs/list-coachs.component';
 import { ListRequestsComponent } from './list-requests/list-requests.component';
 import { RegisterAdminComponent } from './register-admin/register-admin.component';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 
 
 // import "./../../assets/admin/"
@@ -34,8 +35,15 @@ import { RegisterAdminComponent } from './register-admin/register-admin.componen
 })
 export class AdminModule {
 
-  constructor() {
-    //remove scrollTop from index.html (bug affected to login page)
+  constructor(private router:Router) {
+
+
+    // router.events.subscribe((route)=>{
+    //   if(route instanceof NavigationEnd || route instanceof NavigationStart)
+    //   {
+        
+
+          //remove scrollTop from index.html (bug affected to login page)
     document.getElementsByClassName('scrollToTop')[0].remove();
     //remove all links
     document.querySelectorAll("link").forEach(el => el.remove());
@@ -49,7 +57,6 @@ export class AdminModule {
     styleAdmin.href = "./../../assets/admin/allAdmin.css";
     styleAdmin.rel = 'stylesheet';
     head[0].appendChild(styleAdmin);
-
     //implement all js
     //cdn jquery:http:////ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js
     const allJsToImport = [
@@ -83,5 +90,11 @@ export class AdminModule {
       scriptElem.src = jsLoader;
       body[0].appendChild(scriptElem);
     }
+
+    //   }
+    // })
+  
+
+    
   }
 }

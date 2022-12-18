@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'FrontGaming';
 
+  constructor(private router:Router)
+  {
+    // if(!router.)
+  }
   onActivate(event: any) {
     // window.scroll(0,0);
 
@@ -16,5 +21,6 @@ export class AppComponent {
       left: 0,
       behavior: 'smooth'
     });
+  
   }
 }

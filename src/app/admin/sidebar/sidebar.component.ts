@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
 
+  constructor(private router:Router)
+  {
+    console.log(router.url.split("/")[this.router.url.split("/").length - 1])
+  }
+  currentUrl:string = this.router.url.split("/")[this.router.url.split("/").length - 1];
+
+
+  
 }
